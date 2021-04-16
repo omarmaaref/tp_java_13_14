@@ -18,14 +18,8 @@ private static Rushable rushable;
 		boolean priorityOrder = false;if( rushable != null ) {priorityOrder = rushable.isRushable(orderDate, orderAmount);}
 		return priorityOrder;}
 
-	public Order(MyDate d, double amt, String c, Product p, int q) {
-		setOrderDate(d);
-		orderAmount = amt;
-		customer = c;
-		product = p;
-		quantity = q;
-	}
-
+	public Order(MyDate d, double amt, String c, Product p, int q) {setOrderDate(d);orderAmount = amt;customer = c;
+		product = p;quantity = q;}
 	public String toString() {
 		return quantity + " ea. " + product + " for " + customer;
 	}
@@ -52,7 +46,11 @@ private static Rushable rushable;
 			return 'L';
 		return 'X';
 	}
-
+	private boolean isHoliday(MyDate proposedDate)
+	{boolean result = false;
+		for (MyDate holiday :MyDate.getHolidays())
+		{if( holiday.equals(proposedDate) ) {result =true;}}
+		return result;}
 	public double computeTotal() {
 
 		double finalAmount = orderAmount + computeTax();
@@ -75,10 +73,9 @@ private static Rushable rushable;
 		return orderDate;
 	}
 
-	public void setOrderDate(MyDate orderDate) {
-		this.orderDate = orderDate;
-	}
-
+	public void setOrderDate(MyDate orderDate)
+	{if (isHoliday(orderDate)) {System.out.println("Order date, " + orderDate + ", cannot be set to a holiday!");}
+	else {this.orderDate = orderDate;}}
 	public double getOrderAmount() {
 		return orderAmount;
 	}

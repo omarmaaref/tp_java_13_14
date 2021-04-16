@@ -1,6 +1,15 @@
 package com.acme.utils;
 
 public class ConversionService {
+private static double cst=2.20462;
+public static double[][] kilo_to_pound(double ...args){
+double[][] ret=new double[args.length][2];
+	int i=0;
+	for(double x:args) {
+		ret[i][0]=x;ret[i][1]=x*cst;i+=1;
+	//System.out.println(ret[i-1]+" ");
+}
+return ret;}
 
 	/*** weight conversion rates */
 

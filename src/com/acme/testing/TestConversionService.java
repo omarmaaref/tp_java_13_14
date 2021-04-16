@@ -58,7 +58,8 @@ public class TestConversionService {
 		System.out.println(bigGrams);
 		long bigGrams2 = 1234567890L * 1000L;
 		System.out.println(bigGrams2);
-
+		double[][] results = ConversionService.kilo_to_pound(14.0, 29.0, 6.5, 7.7);
+		for (double[] result : results) {System.out.println(result[0] + "->" + result[1]);}
 	}
 
 }

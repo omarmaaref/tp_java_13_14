@@ -5,14 +5,27 @@ public class MyDate {
 	private int day;
 	private int year;
 	private int month;
-
+	private static MyDate[] holidays={
+			new MyDate(1,1,2016),
+			new MyDate(9,5,2016),
+			new MyDate(5,30,2016),
+			new MyDate(11,24,2016),
+	};
+public static MyDate[] getHolidays(){
+	return holidays; }
+	public static void listHolidays() {System.out.println("the holidays are:");
+	/*for (int x = 0; x < holidays.length; x++)
+	{System.out.println(holidays[x]); }*/
+		for(MyDate x: holidays)
+		{System.out.println(x); }
+}
 	public MyDate() {
 		this(1, 1, 1900);
 	}
 
 	public MyDate(int m, int d, int y) {
 
-		if (valid(day, month, year)) {
+		if (valid(d, m, y)) {
 			month = m;
 			day = d;
 			year = y;
